@@ -12,6 +12,7 @@ mogoose.connect("mongodb+srv://sanskarkakani:sanskar@cluster0.ka9xprr.mongodb.ne
 
     app.get("/", function(req, res){
         res.send("API is working!")
+        res.end(res.statusCode)
     })
 
     app.get("/posts/list", async function(req, res){
