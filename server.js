@@ -30,7 +30,6 @@ mogoose.connect("mongodb+srv://sanskarkakani:sanskar@cluster0.ka9xprr.mongodb.ne
         })
 
         await newpost.save()
-
         const response = {message: "New post created"}
         res.json(response);
     })
@@ -39,7 +38,6 @@ mogoose.connect("mongodb+srv://sanskarkakani:sanskar@cluster0.ka9xprr.mongodb.ne
     //     var post = await post.find({userid: req.body.userid});
     //     res.json(post)
     // })
-
 })
 
 const PORT = process.env.PORT || 5050
