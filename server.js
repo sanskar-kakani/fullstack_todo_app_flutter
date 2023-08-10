@@ -2,42 +2,42 @@ const express = require('express');
 const app = express();
 
 const mogoose = require('mongoose')
-const Todo = require('./models/Todo')
+const post = require('./models/Post')
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
 
-mogoose.connect("mongodb+srv://sanskarkakani:sanskar@cluster0.ka9xprr.mongodb.net/todo").then(function(){
+mogoose.connect("mongodb+srv://sanskarkakani:sanskar@cluster0.ka9xprr.mongodb.net/post").then(function(){
 
     app.get("/", function(req, res){
         res.send("API is working!")
     })
 
-    app.get("/todos/list", async function(req, res){
-        var todos = await Todo.find();
-        res.json(todos);
+    app.get("/posts/list", async function(req, res){
+        var posts = await post.find();
+        res.json(posts);
     })
 
-    app.post("/todos/add", async function(req, res){
+    app.post("/posts/add", async function(req, res){
         
         res.json(req.body)
 
-        const newTodo = new Todo({
+        const newpost = new post({
             title: req.body.titl,
             content: req.body.content,
             date: req.body.date
         })
 
-        await newTodo.save()
+        await newpost.save()
 
-        const response = {message: "New Message created"}
+        const response = {message: "New post created"}
         res.json(response);
     })
 
-    // app.get("/todos/list/:userid", async function(req, res){
-    //     var todo = await Todo.find({userid: req.body.userid});
-    //     res.json(todo)
+    // app.get("/posts/list/:userid", async function(req, res){
+    //     var post = await post.find({userid: req.body.userid});
+    //     res.json(post)
     // })
 
 })
