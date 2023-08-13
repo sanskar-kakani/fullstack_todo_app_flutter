@@ -15,23 +15,22 @@ mogoose.connect("mongodb+srv://sanskarkakani:sanskar@cluster0.ka9xprr.mongodb.ne
         res.end(res.statusCode)
     })
 
-    app.get("/posts/list", async function(req, res){
+    app.get("/post/list", async function(req, res){
         var posts = await post.find();
         res.json(posts);
     })
 
-    app.post("/posts/add", async function(req, res){
+    app.get("/post/add", async function(req, res){
         
-        res.json(req.body)
+        // res.json(req.body)
 
         const newpost = new post({
-            title: req.body.titl,
-            content: req.body.content,
-            date: req.body.date
+            title: "sanskar",
+            content: "kakani",
         })
 
-        await newpost.save()
-        const response = {message: "New post created"}
+        // await newpost.save()
+        const response = {message: "New post created", data: newpost}
         res.json(response);
     })
 
@@ -41,8 +40,8 @@ mogoose.connect("mongodb+srv://sanskarkakani:sanskar@cluster0.ka9xprr.mongodb.ne
     // })
 })
 
-const PORT = process.env.PORT || 5050
-app.listen(PORT, ()=>{
-    console.log(PORT)
+// const PORT = process.env.PORT || 5050
+app.listen(5050, ()=>{
+    // console.log(PORT)
 })
 

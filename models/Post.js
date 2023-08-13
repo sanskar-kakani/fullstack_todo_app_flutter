@@ -9,12 +9,13 @@ const postSchema = mongoose.Schema({
 
     content: {
         type: String,
+        required: true
     },
 
-    date: {
-        type: Date,
-        default: Date.now
-    }
+    // date: {
+    //     type: Date,
+    //     default: Date.now
+    // }
 
 });
 
